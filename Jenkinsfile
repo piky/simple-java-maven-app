@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
-                nexusPublisher nexusInstanceId: 'aspn-dev-repo', nexusRepositoryId: 'simple-java-maven-app', packages: [], tagName: 'master'
+                nexusPublisher nexusInstanceId: 'aspn-dev-repo', nexusRepositoryId: 'simple-java-maven-app', packages: []
             }
         }
         stage('Test') {
