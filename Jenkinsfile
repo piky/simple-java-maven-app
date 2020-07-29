@@ -9,9 +9,9 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Test') {
+        stage('Verify') {
             steps {
-                sh 'mvn test'
+                sh 'mvn verify'
             }
             post {
                 always {
@@ -19,15 +19,10 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
+        stage('Upload') { 
             steps {
-                sh 'mvn -B -DskipTests clean package'
-//                nexusPublisher nexusInstanceId: 'dev-repo', nexusRepositoryId: 'simple-java-maven-app', packages: [[$class: 'MavenPackage', mavenAssetList: [], mavenCoordinate: [artifactId: 'my-app', groupId: 'om.mycompany.app', packaging: 'jar', version: '1.0-SNAPSHOT']]]
-            }
-        }
-        stage('Deliver') { 
-            steps {
-                sh './jenkins/scripts/deliver.sh' 
+//                sh './jenkins/scripts/deliver.sh' 
+                sh 'mvn clean deploy'
             }
         }
     }
