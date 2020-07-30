@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Publish') { 
             steps {
-                nexusPublisher nexusInstanceId: 'dev-repo', nexusRepositoryId: 'simple-java-maven-app', packages: [[$class: 'MavenPackage', mavenAssetList: [], mavenCoordinate: [artifactId: 'simple-java-maven-app', groupId: 'th.co.aspiron.app', packaging: 'jar', version: '1.0.0-SNAPSHOT']]]
+                nexusPublisher nexusInstanceId: 'dev-repo', nexusRepositoryId: 'simple-java-maven-app', packages: []
             }
         }
     }
