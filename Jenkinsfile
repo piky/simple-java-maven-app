@@ -9,9 +9,9 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Verify') {
+        stage('Build') {
             steps {
-                sh 'mvn verify'
+                sh 'mvn install'
             }
             post {
                 always {
@@ -19,11 +19,10 @@ pipeline {
                 }
             }
         }
-        stage('Upload') { 
+        stage('Publish') { 
             steps {
-//                sh './jenkins/scripts/deliver.sh' 
                 nexusPublisher nexusInstanceId: 'dev-repo', nexusRepositoryId: 'simple-java-maven-app', packages: []
-                sh 'mvn deploy'
+//                sh 'mvn deploy'
             }
         }
     }
