@@ -22,6 +22,7 @@ pipeline {
         stage('Upload') { 
             steps {
 //                sh './jenkins/scripts/deliver.sh' 
+                nexusPublisher nexusInstanceId: 'dev-repo', nexusRepositoryId: 'simple-java-maven-app', packages: []
                 sh 'mvn deploy'
             }
         }
