@@ -21,8 +21,8 @@ pipeline {
         }
         stage('Publish') { 
             steps {
-//                  sh 'mvn deploy'
-                nexusPublisher nexusInstanceId: 'dev-repo', nexusRepositoryId: 'simple-java-maven-app', packages: []
+                sh 'mvn deploy'
+//                nexusPublisher nexusInstanceId: 'dev-repo', nexusRepositoryId: 'simple-java-maven-app', packages: []
             }
         }
     }
