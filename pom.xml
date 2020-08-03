@@ -15,10 +15,10 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
+<!--   <build>
     <plugins>
       <plugin>
-        <!-- Build an executable JAR -->
+        // Build an executable JAR
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
@@ -37,11 +37,11 @@
   <distributionManagement>
     <snapshotRepository>
       <id>simple-java-maven-app</id>
-      <url>http://poc:8081/repository/simple-java-maven-app/</url>
+      <url>http://localhost:8081/repository/simple-java-maven-app/</url>
     </snapshotRepository>
     <repository>
       <id>simple-java-maven-app</id>
-      <url>http://poc:8081/repository/simple-java-maven-app/</url>
+      <url>http://localhost:8081/repository/simple-java-maven-app/</url>
     </repository>
-  </distributionManagement>
+  </distributionManagement> -->
 </project>
