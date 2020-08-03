@@ -10,9 +10,14 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
+        stage('UnitTest') {
+            steps {
+                sh 'mvn clean test'
+            }
+        }
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean verify'
+                sh 'mvn verify'
             }
             post {
                 always {
