@@ -10,18 +10,14 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('UnitTest') {
-            steps {
-                sh 'mvn clean test'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'mvn verify'
             }
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml'
+                    junit(allowEmptyResults: true,
+                    testResults: 'target/surefire-reports/*.xml')
                 }
             }
         }
