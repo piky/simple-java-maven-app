@@ -1,14 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('UnitTest') {
-            steps {
-                sh 'mvn test'
-            }
-        }
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn clean verify'
             }
         }
         stage('Publish') { 
