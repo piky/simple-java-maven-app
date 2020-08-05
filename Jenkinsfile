@@ -10,6 +10,12 @@ pipeline {
             steps {
                 sh 'mvn clean verify'
             }
+            post {
+                always {
+                    junit(allowEmptyResults: true,
+                    testResults: 'target/surefire-reports/*.xml')
+                }
+            }
         }
         stage('Publish') { 
             steps {
