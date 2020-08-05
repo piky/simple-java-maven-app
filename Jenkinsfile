@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /home/.m2:/usr/share/maven/ref/'
+        }
+    }
     stages {
         stage('Build') {
             steps {
@@ -8,7 +13,7 @@ pipeline {
         }
         stage('Publish') { 
             steps {
-                sh 'mvn deploy'
+                sh 'mvn -B -DskipTests deploy -s /usr/share/maven/ref/settings.xml'
             }
         }
         stage('Build Docker Image') {
